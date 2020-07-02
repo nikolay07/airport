@@ -6,7 +6,7 @@ const Flight = (props) => {
   const localTime = moment(props.localTime).format("HH:mm");
   const timeStatus = moment(props.timeStatus).format("HH:mm");
 
-  const newStatus = () => {
+  const setStatus = () => {
     switch (status) {
       case "DP":
         return `Departed at ${timeStatus}`;
@@ -37,7 +37,7 @@ const Flight = (props) => {
         <span>{airportName}</span>
       </td>
       <td className="status-field">
-        <span>{newStatus()}</span>
+        <span>{setStatus()}</span>
       </td>
       <td className="company-name">
         <span className="logo">
