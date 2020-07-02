@@ -12,6 +12,8 @@ const Flight = (props) => {
         return `Departed at ${timeStatus}`;
       case "ON":
         return "On time";
+      case "CX":
+        return "Cancelled";
       case "CK":
         return "Check-in";
       case "GC":
