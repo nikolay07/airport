@@ -7,7 +7,8 @@ function FlightsTable() {
   const location = useLocation();
   const departureClass =
     status === "departures" ? "flights-list__btn_active" : "";
-  const arrivalClass = status === "arrivals" ? "flights-list__btn_active" : "";
+  const arrivalClass =
+    status === "arrivals" ? "flights-list__btn_active" : "";
 
   useEffect(() => {
     if (location.pathname.includes("arrivals")) {

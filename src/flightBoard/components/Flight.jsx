@@ -18,6 +18,8 @@ const Flight = (props) => {
         return "Check-in";
       case "GC":
         return "Gate closed";
+      case "FR":
+        return "In flight";
       case "LN":
         return `Landed ${timeStatus}`;
       default:

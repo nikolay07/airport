@@ -1,25 +1,37 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { useParams, useLocation } from "react-router-dom";
-import { departureSelector, arrivalSelector } from "../flights.selectors";
+import {
+  departureSelector,
+  arrivalSelector,
+} from "../flights.selectors";
 import { fetchFlightsList } from "../flights.actions";
 import qs from "qs";
 import Flight from "./Flight";
 
-const FlightsList = ({ departureFlightsList, arrivalFlightsList }) => {
+const FlightsList = ({
+  departureFlightsList,
+  arrivalFlightsList,
+}) => {
   const [flightsList, setFlightsList] = useState([]);
   const [status, setStatus] = useState("");
   const { direction } = useParams();
   const location = useLocation();
 
   useEffect(() => {
-    const query = qs.parse(location.search, { ignoreQueryPrefix: true });
+    const query = qs.parse(location.search, {
+      ignoreQueryPrefix: true,
+    });
 
     if (direction && direction.includes("arrivals")) {
-      setFlightsList(filterFlightsList(arrivalFlightsList, query.search));
+      setFlightsList(
+        filterFlightsList(arrivalFlightsList, query.search)
+      );
       setStatus("arrivals");
     } else {
-      setFlightsList(filterFlightsList(departureFlightsList, query.search));
+      setFlightsList(
+        filterFlightsList(departureFlightsList, query.search)
+      );
       setStatus("departures");
     }
   }, [location, departureFlightsList, arrivalFlightsList]);
@@ -38,7 +50,8 @@ const FlightsList = ({ departureFlightsList, arrivalFlightsList }) => {
         term: flight.term,
         fltNo: `${flight["carrierID.IATA"]}${flight.fltNo}`,
         airportName:
-          flight["airportToID.name_en"] || flight["airportFromID.name_en"],
+          flight["airportToID.name_en"] ||
+          flight["airportFromID.name_en"],
         localTime: flight.timeDepShedule,
         timeStatus: flight.timeTakeofFact,
         status: flight.status,
