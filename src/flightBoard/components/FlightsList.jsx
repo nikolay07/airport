@@ -81,10 +81,6 @@ const mapDispatch = {
 export default connect(mapState, mapDispatch)(FlightsList);
 
 FlightsList.propTypes = {
-  departureFlightsList: PropTypes.arrayOf(PropTypes.shape),
-  arrivalFlightsList: PropTypes.arrayOf(PropTypes.shape),
-};
-FlightsList.defaultProps = {
-  departureFlightsList: [],
-  arrivalFlightsList: [],
+  departureFlightsList: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  arrivalFlightsList: PropTypes.arrayOf(PropTypes.shape).isRequired,
 };
