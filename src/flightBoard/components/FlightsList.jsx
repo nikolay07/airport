@@ -13,16 +13,16 @@ const FlightsList = ({ departureFlightsList, arrivalFlightsList }) => {
   const { direction } = useParams();
   const location = useLocation();
 
-  const filterFlightsList = (flightsList, queryString) => {
-    if (!queryString) return flightsList;
-    return flightsList.filter((flight) => {
+  const filterFlightsList = (flightList, queryString) => {
+    if (!queryString) return flightList;
+    return flightList.filter((flight) => {
       const fltNo = `${flight["carrierID.IATA"]}${flight.fltNo}`;
       return fltNo.toLowerCase().includes(queryString.toLowerCase());
     });
   };
 
-  const createFlightsList = (flightsList, flightDirection) => {
-    return flightsList.map((flight) => {
+  const createFlightsList = (flights, flightDirection) => {
+    return flights.map((flight) => {
       let data = {
         term: flight.term,
         fltNo: `${flight["carrierID.IATA"]}${flight.fltNo}`,
