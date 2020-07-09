@@ -34,15 +34,10 @@ Your app is ready to be deployed!
 
 In this project was used the following technologies:
 
-+HTML5
-+CSS3
-+Flexbox
-+Sass (Scss)
-+BEM methodology
-+JS ES6
-+ReactJS
-+React-router-dom
-+Redux
-+Redux-thunk
-+Moment.js
-+qs
+- [HTML5]
+- [CSS3]
+- [Sass]
+- [JS-ES6]
+- [ReactJS]
+- [React-router]
+- [Redux]
