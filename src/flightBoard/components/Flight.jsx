@@ -62,5 +62,9 @@ Flight.propTypes = {
   logoUrl: PropTypes.string.isRequired,
   airportName: PropTypes.string.isRequired,
   localTime: PropTypes.string.isRequired,
-  timeStatus: PropTypes.string.isRequired,
+  timeStatus: PropTypes.string,
+};
+
+Flight.defaultProps = {
+  timeStatus: "",
 };

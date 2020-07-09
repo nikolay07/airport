@@ -1,3 +1,5 @@
+@import "./variables.scss";
+
 .logo {
   display: flex;
   align-items: center;
@@ -18,11 +20,11 @@
   font-size: 22px;
   font-weight: 700;
   border-radius: 50%;
-  border: 1px solid #63c745;
-  color: #63c745;
+  border: 1px solid $dark-yelow-green;
+  color: $dark-yelow-green;
   
   &.blue {
-    border-color: deepskyblue;
-    color: deepskyblue;
+    border-color: $deep-sky-blue;
+    color: $deep-sky-blue;
   }
 }

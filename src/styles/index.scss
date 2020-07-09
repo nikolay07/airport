@@ -1,6 +1,7 @@
 @import "./Flight.scss";
 @import "./FlightsTable.scss";
 @import "./SearchField.scss";
+@import "./variables.scss";
 
 * {
   margin: 0;
@@ -10,6 +11,6 @@
 
 body {
   font-family: "Open Sans", sans-serif;
-  color: #2f2f2f;
-  background: #e7efec;
+  color: $darkGrey;
+  background: $grederlevy;
 }

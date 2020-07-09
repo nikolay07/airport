@@ -1,3 +1,5 @@
+@import "./variables.scss";
+
 .search-field {
   max-width: 60%;
   margin: 0 auto;
@@ -22,7 +24,7 @@
     margin-left: 10px;
     top: 50%;
     transform: translate(0, -50%);
-    color: #ccc;
+    color: $lightGrey;
   }
 
   &__input {
@@ -46,8 +48,8 @@
     text-transform: uppercase;
     transition: .3s ease-in-out;
     text-align: left;
-    color: #fff;
-    background: #1eb7ee;
+    color: $text-white;
+    background: $light-blue;
     cursor: pointer;
 
     &:hover {
