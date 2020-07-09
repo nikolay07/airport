@@ -2,14 +2,23 @@ import React from "react";
 import moment from "moment";
 
 const Flight = (props) => {
-  const { term, fltNo, status, name, logoUrl, airportName } = props;
-  const localTime = moment(props.localTime).format("HH:mm");
-  const timeStatus = moment(props.timeStatus).format("HH:mm");
+  const {
+    term,
+    fltNo,
+    status,
+    name,
+    logoUrl,
+    airportName,
+    localTime,
+    timeStatus,
+  } = props;
+  const myLocalTime = moment(localTime).format("HH:mm");
+  const myTimeStatus = moment(timeStatus).format("HH:mm");
 
   const setStatus = () => {
     switch (status) {
       case "DP":
-        return `Departed at ${timeStatus}`;
+        return `Departed at ${myTimeStatus}`;
       case "ON":
         return "On time";
       case "CX":
@@ -21,7 +30,7 @@ const Flight = (props) => {
       case "FR":
         return "In flight";
       case "LN":
-        return `Landed ${timeStatus}`;
+        return `Landed ${myTimeStatus}`;
       default:
         return "Not found";
     }
@@ -34,7 +43,7 @@ const Flight = (props) => {
           {term}
         </span>
       </td>
-      <td className="time-field">{localTime}</td>
+      <td className="time-field">{myLocalTime}</td>
       <td className="way-field">
         <span>{airportName}</span>
       </td>

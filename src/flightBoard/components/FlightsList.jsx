@@ -34,7 +34,7 @@ const FlightsList = ({
       );
       setStatus("departures");
     }
-  }, [location, departureFlightsList, arrivalFlightsList]);
+  }, [location, departureFlightsList, arrivalFlightsList, direction]);
 
   const filterFlightsList = (flightsList, queryString) => {
     if (!queryString) return flightsList;
