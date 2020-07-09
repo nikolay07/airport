@@ -33,6 +33,7 @@ const FlightsList = ({ departureFlightsList, arrivalFlightsList }) => {
         name: flight.airline.en.name,
         logoUrl: flight.airline.en.logoSmallName,
       };
+
       if (flightDirection === "arrivals") {
         data = {
           ...data,
@@ -40,11 +41,18 @@ const FlightsList = ({ departureFlightsList, arrivalFlightsList }) => {
           timeStatus: flight.timeLandFact,
         };
       }
+      const { term, fltNo, name, logoUrl, airportName, localTime, timeStatus } = data;
       return (
         <Flight
           key={flight.ID}
-          // eslint-disable-next-line react/jsx-props-no-spreading
-          {...data}
+          term={term}
+          fltNo={fltNo}
+          airportName={airportName}
+          localTime={localTime}
+          timeStatus={timeStatus}
+          status={data.status}
+          name={name}
+          logoUrl={logoUrl}
         />
       );
     });
