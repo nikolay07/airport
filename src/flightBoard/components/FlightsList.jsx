@@ -1,40 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { useParams, useLocation } from "react-router-dom";
-import {
-  departureSelector,
-  arrivalSelector,
-} from "../flights.selectors";
-import { fetchFlightsList } from "../flights.actions";
 import qs from "qs";
+import PropTypes from "prop-types";
+import { departureSelector, arrivalSelector } from "../flights.selectors";
+import { fetchFlightsList } from "../flights.actions";
 import Flight from "./Flight";
 
-const FlightsList = ({
-  departureFlightsList,
-  arrivalFlightsList,
-}) => {
+const FlightsList = ({ departureFlightsList, arrivalFlightsList }) => {
   const [flightsList, setFlightsList] = useState([]);
   const [status, setStatus] = useState("");
   const { direction } = useParams();
   const location = useLocation();
-
-  useEffect(() => {
-    const query = qs.parse(location.search, {
-      ignoreQueryPrefix: true,
-    });
-
-    if (direction && direction.includes("arrivals")) {
-      setFlightsList(
-        filterFlightsList(arrivalFlightsList, query.search)
-      );
-      setStatus("arrivals");
-    } else {
-      setFlightsList(
-        filterFlightsList(departureFlightsList, query.search)
-      );
-      setStatus("departures");
-    }
-  }, [location, departureFlightsList, arrivalFlightsList, direction]);
 
   const filterFlightsList = (flightsList, queryString) => {
     if (!queryString) return flightsList;
@@ -49,9 +26,7 @@ const FlightsList = ({
       let data = {
         term: flight.term,
         fltNo: `${flight["carrierID.IATA"]}${flight.fltNo}`,
-        airportName:
-          flight["airportToID.name_en"] ||
-          flight["airportFromID.name_en"],
+        airportName: flight["airportToID.name_en"] || flight["airportFromID.name_en"],
         localTime: flight.timeDepShedule,
         timeStatus: flight.timeTakeofFact,
         status: flight.status,
@@ -65,9 +40,29 @@ const FlightsList = ({
           timeStatus: flight.timeLandFact,
         };
       }
-      return <Flight key={flight.ID} {...data} />;
+      return (
+        <Flight
+          key={flight.ID}
+          // eslint-disable-next-line react/jsx-props-no-spreading
+          {...data}
+        />
+      );
     });
   };
+
+  useEffect(() => {
+    const query = qs.parse(location.search, {
+      ignoreQueryPrefix: true,
+    });
+
+    if (direction && direction.includes("arrivals")) {
+      setFlightsList(filterFlightsList(arrivalFlightsList, query.search));
+      setStatus("arrivals");
+    } else {
+      setFlightsList(filterFlightsList(departureFlightsList, query.search));
+      setStatus("departures");
+    }
+  }, [location, departureFlightsList, arrivalFlightsList, direction]);
 
   return <>{createFlightsList(flightsList, status)}</>;
 };
@@ -84,3 +79,12 @@ const mapDispatch = {
 };
 
 export default connect(mapState, mapDispatch)(FlightsList);
+
+FlightsList.propTypes = {
+  departureFlightsList: PropTypes.arrayOf(PropTypes.shape),
+  arrivalFlightsList: PropTypes.arrayOf(PropTypes.shape),
+};
+FlightsList.defaultProps = {
+  departureFlightsList: [],
+  arrivalFlightsList: [],
+};

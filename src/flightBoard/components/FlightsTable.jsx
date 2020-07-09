@@ -5,10 +5,9 @@ import FlightsList from "./FlightsList";
 function FlightsTable() {
   const [status, setStatus] = useState("departures");
   const location = useLocation();
-  const departureClass =
-    status === "departures" ? "flights-list__btn_active" : "";
-  const arrivalClass =
-    status === "arrivals" ? "flights-list__btn_active" : "";
+  const departureClass = status === "departures" ? "flights-list__btn_active" : "";
+  const arrivalClass = status === "arrivals" ? "flights-list__btn_active" : "";
+  const linkDir = "/:direction?";
 
   useEffect(() => {
     if (location.pathname.includes("arrivals")) {
@@ -50,7 +49,7 @@ function FlightsTable() {
           </thead>
           <tbody>
             <Switch>
-              <Route path={`/:direction?`} component={FlightsList} />
+              <Route path={linkDir} component={FlightsList} />
             </Switch>
           </tbody>
         </table>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { useLocation, useHistory } from "react-router-dom";
+import PropTypes from "prop-types";
 import qs from "qs";
 import { dateSelector } from "../flights.selectors";
 
@@ -57,3 +58,10 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps)(SearchField);
+
+SearchField.propTypes = {
+  date: PropTypes.string,
+};
+SearchField.defaultProps = {
+  date: "",
+};
