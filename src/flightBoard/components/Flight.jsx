@@ -46,7 +46,7 @@ const Flight = ({ term, fltNo, status, name, logoUrl, airportName, localTime, ti
         </span>
       </td>
       <td className="flight-field">
-        <span>{`${fltNo}`}</span>
+        <span>{fltNo}</span>
       </td>
     </tr>
   );
