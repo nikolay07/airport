@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Route, Switch, Link, useLocation } from "react-router-dom";
-import FlightsList from "./FlightsList";
+import FlightsList from "../FlightsList/FlightsList";
 
 function FlightsTable() {
   const [status, setStatus] = useState("departures");

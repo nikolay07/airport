@@ -3,7 +3,7 @@ import React from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "./store";
-import SearchFlightsPage from "./flightBoard/components/SearchFlightsPage";
+import SearchFlightsPage from "./flightBoard/components/SearchFlightsPage/SearchFlightsPage";
 
 function App() {
   return (

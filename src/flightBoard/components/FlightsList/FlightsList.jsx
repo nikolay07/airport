@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import { useParams, useLocation } from "react-router-dom";
 import qs from "qs";
 import PropTypes from "prop-types";
-import { departureSelector, arrivalSelector } from "../flights.selectors";
-import { fetchFlightsList } from "../flights.actions";
+import { departureSelector, arrivalSelector } from "../../flights.selectors";
+import { fetchFlightsList } from "../../flights.actions";
 import Flight from "../Flights/Flight";
 
 const FlightsList = ({ departureFlightsList, arrivalFlightsList }) => {
