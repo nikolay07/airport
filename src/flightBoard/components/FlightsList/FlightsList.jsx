@@ -5,7 +5,7 @@ import qs from "qs";
 import PropTypes from "prop-types";
 import { departureSelector, arrivalSelector } from "../flights.selectors";
 import { fetchFlightsList } from "../flights.actions";
-import Flight from "./Flight";
+import Flight from "../Flights/Flight";
 
 const FlightsList = ({ departureFlightsList, arrivalFlightsList }) => {
   const [flightsList, setFlightsList] = useState([]);

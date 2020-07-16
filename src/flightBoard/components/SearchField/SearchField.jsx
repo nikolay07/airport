@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { useLocation, useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import qs from "qs";
-import { dateSelector } from "../flights.selectors";
+import { dateSelector } from "../../flights.selectors";
 
 function SearchField({ date }) {
   const [inputValue, setInputValue] = useState("");

@@ -1,6 +1,6 @@
-@import "./Flight.scss";
-@import "./FlightsTable.scss";
-@import "./SearchField.scss";
+@import "../flightBoard/components/Flights/Flight.scss";
+@import "../flightBoard/components/FlightsTable/FlightsTable.scss";
+@import "../flightBoard/components/SearchField/SearchField.scss";
 @import "./variables.scss";
 
 * {
