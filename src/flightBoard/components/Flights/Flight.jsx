@@ -1,7 +1,7 @@
 import React from "react";
 import moment from "moment";
 import PropTypes from "prop-types";
-import { setStatus } from "./flights.status";
+import { flightStatus } from "./flightStatus";
 
 const Flight = ({ term, fltNo, status, name, logoUrl, airportName, localTime, timeStatus }) => {
   const myLocalTime = moment(localTime).format("HH:mm");
@@ -17,7 +17,7 @@ const Flight = ({ term, fltNo, status, name, logoUrl, airportName, localTime, ti
         <span>{airportName}</span>
       </td>
       <td className="status-field">
-        <span>{setStatus(status, myTimeStatus)}</span>
+        <span>{flightStatus(status, myTimeStatus)}</span>
       </td>
       <td className="company-name">
         <span className="logo">
@@ -47,5 +47,5 @@ Flight.propTypes = {
 
 Flight.defaultProps = {
   timeStatus: "",
-  localTime:''
+  localTime: "",
 };
