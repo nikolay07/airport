@@ -4,12 +4,11 @@ import FlightsList from "../FlightsList/FlightsList";
 
 function FlightsTable() {
   const [status, setStatus] = useState("departures");
-  //const { departures } = useParams();
   const location = useLocation();
   const departureClass = status === "departures" ? "flights-list__btn_active" : "";
   const arrivalClass = status === "arrivals" ? "flights-list__btn_active" : "";
   const linkDir = "/:direction?";
-  
+
   useEffect(() => {
     if (location.pathname.includes("arrivals")) {
       setStatus("arrivals");

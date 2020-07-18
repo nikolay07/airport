@@ -12,31 +12,17 @@ export const dateSelector = (state) => {
 const filterFlightsList = (flightsList, filterString) => {
   const today = moment().format("YYYY-MM-DD");
   return flightsList.filter((flight) => {
-    const dateOfDeparture = moment(flight[filterString]).format(
-      "YYYY-MM-DD"
-    );
+    const dateOfDeparture = moment(flight[filterString]).format("YYYY-MM-DD");
     return moment(today).isSame(dateOfDeparture);
   });
 };
 
-export const departureSelector = createSelector(
-  [flightsListSelector],
-  (flightsList) => {
-    if (flightsList.length === 0) return flightsList;
-    return filterFlightsList(
-      flightsList.body.departure,
-      "timeDepShedule"
-    );
-  }
-);
+export const departureSelector = createSelector([flightsListSelector], (flightsList) => {
+  if (flightsList.length === 0) return flightsList;
+  return filterFlightsList(flightsList.body.departure, "timeDepShedule");
+});
 
-export const arrivalSelector = createSelector(
-  [flightsListSelector],
-  (flightsList) => {
-    if (flightsList.length === 0) return flightsList;
-    return filterFlightsList(
-      flightsList.body.arrival,
-      "timeArrShedule"
-    );
-  }
-);
+export const arrivalSelector = createSelector([flightsListSelector], (flightsList) => {
+  if (flightsList.length === 0) return flightsList;
+  return filterFlightsList(flightsList.body.arrival, "timeArrShedule");
+});

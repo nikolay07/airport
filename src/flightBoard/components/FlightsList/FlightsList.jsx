@@ -5,14 +5,13 @@ import qs from "qs";
 import PropTypes from "prop-types";
 import { departureSelector, arrivalSelector } from "../../flights.selectors";
 import Flight from "../Flights/Flight";
-import {createFlight} from './createFlight'
+import { createFlight } from "./createFlight";
 
 const FlightsList = ({ departureFlightsList, arrivalFlightsList }) => {
   const [flightsList, setFlightsList] = useState([]);
   const { direction } = useParams();
   const location = useLocation();
-  
- 
+
   const filterFlightsList = (flightList, queryString) => {
     if (!queryString) return flightList;
     return flightList.filter((flight) => {
@@ -23,9 +22,9 @@ const FlightsList = ({ departureFlightsList, arrivalFlightsList }) => {
 
   const createFlightsList = (flights, flightDirection) => {
     return flights.map((flight) => {
-      const data = createFlight (flight, flightDirection)
+      const data = createFlight(flight, flightDirection);
       const { term, fltNo, name, logoUrl, airportName, localTime, timeStatus } = data;
-          return (
+      return (
         <Flight
           key={flight.ID}
           term={term}
@@ -40,16 +39,16 @@ const FlightsList = ({ departureFlightsList, arrivalFlightsList }) => {
       );
     });
   };
-   useEffect(() => {
+  useEffect(() => {
     const query = qs.parse(location.search, {
       ignoreQueryPrefix: true,
     });
 
     if (direction && direction.includes("arrivals")) {
       setFlightsList(filterFlightsList(arrivalFlightsList, query.search));
-        } else {
+    } else {
       setFlightsList(filterFlightsList(departureFlightsList, query.search));
-         }
+    }
   }, [location, departureFlightsList, arrivalFlightsList, direction]);
 
   return <>{createFlightsList(flightsList, direction)}</>;
@@ -61,7 +60,6 @@ const mapState = (state) => {
     arrivalFlightsList: arrivalSelector(state),
   };
 };
-
 
 export default connect(mapState, null)(FlightsList);
 
