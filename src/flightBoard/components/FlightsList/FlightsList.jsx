@@ -23,7 +23,7 @@ const FlightsList = ({ departureFlightsList, arrivalFlightsList }) => {
   const createFlightsList = (flights, flightDirection) => {
     return flights.map((flight) => {
       const data = createFlight(flight, flightDirection);
-      const { term, fltNo, name, logoUrl, airportName, localTime, timeStatus } = data;
+      const { term, fltNo, name, logoUrl, airportName, localTime, timeStatus, status } = data;
       return (
         <Flight
           key={flight.ID}
@@ -32,7 +32,7 @@ const FlightsList = ({ departureFlightsList, arrivalFlightsList }) => {
           airportName={airportName}
           localTime={localTime}
           timeStatus={timeStatus}
-          status={data.status}
+          status={status}
           name={name}
           logoUrl={logoUrl}
         />
