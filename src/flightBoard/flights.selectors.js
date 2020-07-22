@@ -19,10 +19,10 @@ const filterFlightsList = (flightsList, filterString) => {
 
 export const departureSelector = createSelector([flightsListSelector], (flightsList) => {
   if (flightsList.length === 0) return flightsList;
-  return filterFlightsList(flightsList.body.departure, "timeDepShedule");
+  return filterFlightsList(flightsList.departure, "timeDepShedule");
 });
 
 export const arrivalSelector = createSelector([flightsListSelector], (flightsList) => {
   if (flightsList.length === 0) return flightsList;
-  return filterFlightsList(flightsList.body.arrival, "timeArrShedule");
+  return filterFlightsList(flightsList.arrival, "timeArrShedule");
 });

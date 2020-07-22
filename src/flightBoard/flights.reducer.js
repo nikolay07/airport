@@ -10,7 +10,7 @@ const flightsReducer = (state = initialState, action) => {
     case FLIGHTS_LIST_RECIEVED:
       return {
         ...state,
-        flightsList: action.payload.flightsList,
+        flightsList: action.payload.flightsList.body,
         date: action.payload.date,
       };
     default:

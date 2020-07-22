@@ -10,10 +10,9 @@ export const flightsListRecieved = (flightsList, date) => {
 };
 
 export const fetchFlightsList = (date) => {
-  const thunkAction = (dispatch) => {
+  return (dispatch) => {
     fetchFlights(date).then((flightsList) => {
       dispatch(flightsListRecieved(flightsList, date));
     });
   };
-  return thunkAction;
 };
