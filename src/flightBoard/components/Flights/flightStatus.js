@@ -1,4 +1,4 @@
-export const flightStatus = (status, myTimeStatus) => {
+export const getFlightStatus = (status, myTimeStatus) => {
   switch (status) {
     case "DP":
       return `Departed at ${myTimeStatus}`;

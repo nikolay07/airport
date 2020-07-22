@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { useParams, useLocation } from "react-router-dom";
 import qs from "qs";
@@ -8,7 +8,6 @@ import Flight from "../Flights/Flight";
 import { createFlight } from "./createFlight";
 
 const FlightsList = ({ departureFlightsList, arrivalFlightsList }) => {
-  const [flightsList, setFlightsList] = useState([]);
   const { direction } = useParams();
   const location = useLocation();
 
@@ -22,8 +21,8 @@ const FlightsList = ({ departureFlightsList, arrivalFlightsList }) => {
 
   const createFlightsList = (flights, flightDirection) => {
     return flights.map((flight) => {
-      const data = createFlight(flight, flightDirection);
-      const { term, fltNo, name, logoUrl, airportName, localTime, timeStatus, status } = data;
+      const formatFlight = createFlight(flight, flightDirection);
+      const { term, fltNo, name, logoUrl, airportName, localTime, timeStatus, status } = formatFlight;
       return (
         <Flight
           key={flight.ID}
@@ -39,19 +38,19 @@ const FlightsList = ({ departureFlightsList, arrivalFlightsList }) => {
       );
     });
   };
-  useEffect(() => {
-    const query = qs.parse(location.search, {
-      ignoreQueryPrefix: true,
-    });
+  const query = qs.parse(location.search, {
+    ignoreQueryPrefix: true,
+  });
+  const filterArrivals = filterFlightsList(arrivalFlightsList, query.search);
+  const filterDepartures = filterFlightsList(departureFlightsList, query.search);
 
-    if (direction && direction.includes("arrivals")) {
-      setFlightsList(filterFlightsList(arrivalFlightsList, query.search));
-    } else {
-      setFlightsList(filterFlightsList(departureFlightsList, query.search));
-    }
-  }, [location, departureFlightsList, arrivalFlightsList, direction]);
-
-  return <>{createFlightsList(flightsList, direction)}</>;
+  return (
+    <>
+      {direction.includes("arrivals")
+        ? createFlightsList(filterArrivals, direction)
+        : createFlightsList(filterDepartures, direction)}
+    </>
+  );
 };
 
 const mapState = (state) => {
