@@ -43,12 +43,12 @@ const FlightsList = ({ departureFlightsList, arrivalFlightsList }) => {
   });
   const filterArrivals = filterFlightsList(arrivalFlightsList, query.search);
   const filterDepartures = filterFlightsList(departureFlightsList, query.search);
-
+  // console.log(direction);
   return (
     <>
-      {direction.includes("arrivals")
-        ? createFlightsList(filterArrivals, direction)
-        : createFlightsList(filterDepartures, direction)}
+      {(direction || " ").includes("arrivals")
+        ? createFlightsList(filterDepartures, direction)
+        : createFlightsList(filterArrivals, direction)}
     </>
   );
 };
