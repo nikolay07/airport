@@ -38,6 +38,7 @@ const FlightsList = ({ departureFlightsList, arrivalFlightsList }) => {
       );
     });
   };
+
   const query = qs.parse(location.search, {
     ignoreQueryPrefix: true,
   });
@@ -46,9 +47,9 @@ const FlightsList = ({ departureFlightsList, arrivalFlightsList }) => {
 
   return (
     <>
-      {(direction || " ").includes("arrivals")
-        ? createFlightsList(filterDepartures, direction)
-        : createFlightsList(filterArrivals, direction)}
+      {direction && direction.includes("arrivals")
+        ? createFlightsList(filterArrivals, direction)
+        : createFlightsList(filterDepartures, direction)}
     </>
   );
 };
