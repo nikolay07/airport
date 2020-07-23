@@ -8,7 +8,7 @@ function SearchField({ date }) {
   const location = useLocation();
   const [flightID, setflightID] = useState(() => {
     const num = location.search.substr(13, 1) === "&" ? 5 : 6;
-    return location.search.length > 0 ? `${location.search.substr(8, num)}` : " ";
+    return location.search.length > 28 ? `${location.search.substr(8, num)}` : " ";
   });
 
   return (
