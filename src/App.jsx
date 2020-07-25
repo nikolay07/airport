@@ -1,4 +1,4 @@
-import "./styles/index.scss";
+import "./index.scss";
 import React from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
